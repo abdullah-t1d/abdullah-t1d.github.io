@@ -259,6 +259,8 @@ function Hero() {
   return (
     <section id="top" className="hero">
       <div className="container">
+        <div className="hero__grid">
+        <div className="hero__text">
         <motion.a href="#research" className="hero__news" {...enter(0)}>
           <span className="hero__news-tag">ASE '26</span>
           IoTutorMine paper in the ASE 2026 proceedings
@@ -272,6 +274,9 @@ function Hero() {
         <motion.p className="hero__statement" {...enter(2)}>
           Software engineering at the core, extended into <em>AI</em>, <em>research</em> and <em>IoT</em>.
         </motion.p>
+        </div>
+        <HeroVisual />
+        </div>
 
         <div className="hero__path">
           <motion.span
@@ -293,6 +298,127 @@ function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Hero illustration drawn in SVG: software engineering as the foundation that
+// carries a wearable (IoT), a mobile app, a backend, an AI model and research.
+function HeroVisual() {
+  const reduce = useReducedMotion();
+  const at = (delay, from = { opacity: 0 }, to = { opacity: 1 }, duration = 0.8) => ({
+    initial: reduce ? false : from,
+    animate: to,
+    transition: { duration, ease, delay },
+  });
+  const draw = (delay, duration = 1) => at(delay, { pathLength: 0, opacity: 0 }, { pathLength: 1, opacity: 1 }, duration);
+  const rise = (delay) => at(delay, { opacity: 0, y: 10 }, { opacity: 1, y: 0 });
+
+  return (
+    <motion.div className="hero-visual" {...at(0.3)}>
+      <svg viewBox="0 0 520 520" aria-hidden="true" focusable="false">
+        <defs>
+          <pattern id="hv-dots" width="26" height="26" patternUnits="userSpaceOnUse">
+            <circle cx="13" cy="13" r="1" className="hv-dot" />
+          </pattern>
+          <radialGradient id="hv-fade" cx="50%" cy="46%" r="58%">
+            <stop offset="0.55" stopColor="#fff" />
+            <stop offset="1" stopColor="#000" />
+          </radialGradient>
+          <mask id="hv-mask"><rect width="520" height="520" fill="url(#hv-fade)" /></mask>
+        </defs>
+
+        <rect width="520" height="520" fill="url(#hv-dots)" mask="url(#hv-mask)" />
+
+        {/* Foundation: software engineering */}
+        <motion.g {...rise(0.45)}>
+          <rect x="40" y="436" width="440" height="36" rx="9" className="hv-base" />
+          <text x="60" y="459" className="hv-base-label">SOFTWARE ENGINEERING</text>
+          <text x="460" y="459" textAnchor="end" className="hv-base-label hv-base-label--soft">FOUNDATION</text>
+          <rect x="58" y="480" width="404" height="11" rx="5.5" className="hv-base hv-base--2" />
+          <rect x="78" y="498" width="364" height="7" rx="3.5" className="hv-base hv-base--3" />
+        </motion.g>
+
+        {/* Supports rising from the foundation */}
+        {[[108, 414], [264, 390], [418, 364]].map(([x, y], i) => (
+          <motion.path key={x} d={`M${x} 436 V${y}`} className="hv-support" {...draw(0.75 + i * 0.08, 0.6)} />
+        ))}
+        {[108, 264, 418].map((x, i) => (
+          <motion.circle key={x} cx={x} cy="436" r="3.5" className="hv-joint" {...at(0.8 + i * 0.08)} />
+        ))}
+
+        {/* Wearable: sense */}
+        <motion.g {...rise(1)}>
+          <rect x="84" y="262" width="48" height="152" rx="20" className="hv-strap" />
+          <rect x="66" y="300" width="84" height="76" rx="22" className="hv-device" />
+          <rect x="150" y="327" width="5" height="20" rx="2" className="hv-fill-ink" />
+          <text x="66" y="250" className="hv-label">WEARABLE</text>
+        </motion.g>
+        <motion.path d="M78 338 H94 L100 322 L108 356 L115 330 L120 338 H138" className="hv-pulse" {...draw(1.5, 1.2)} />
+
+        {/* Mobile app */}
+        <motion.g {...rise(1.12)}>
+          <rect x="228" y="252" width="72" height="138" rx="14" className="hv-device" />
+          <path d="M254 262 H274" className="hv-soft-line" />
+          <rect x="238" y="276" width="52" height="30" rx="5" className="hv-screen" />
+          <path d="M238 318 H282 M238 328 H270 M238 338 H278" className="hv-soft-line" />
+          <circle cx="264" cy="370" r="5" className="hv-device" />
+          <text x="228" y="240" className="hv-label">APP</text>
+        </motion.g>
+
+        {/* Backend / cloud */}
+        <motion.g {...rise(1.24)}>
+          {[0, 34, 68].map((dy) => (
+            <g key={dy}>
+              <rect x="362" y={284 + dy} width="112" height="26" rx="6" className="hv-device" />
+              <circle cx="378" cy={297 + dy} r="3" className="hv-fill-green" />
+              <circle cx="390" cy={297 + dy} r="3" className="hv-fill-soft" />
+              <path d={`M424 ${297 + dy} H460`} className="hv-soft-line" />
+            </g>
+          ))}
+          <text x="362" y="272" className="hv-label">BACKEND</text>
+        </motion.g>
+
+        {/* Data flow: wearable → BLE → app → backend */}
+        <motion.path d="M156 337 C184 337 200 322 228 322" className="hv-link hv-link--ble" {...draw(1.55, 0.8)} />
+        <motion.text x="172" y="312" className="hv-label hv-label--clay" {...at(1.9)}>BLE</motion.text>
+        <motion.path d="M300 322 H362" className="hv-link" {...draw(1.75, 0.6)} />
+
+        {/* AI model */}
+        <motion.path d="M452 284 C452 210 310 196 206 196" className="hv-link hv-link--green" {...draw(1.95, 1)} />
+        <motion.g {...rise(2.05)}>
+          <path d="M112 76 L70 136 M112 76 L160 128 M70 136 L118 186 M160 128 L118 186 M160 128 L200 196 M118 186 L200 196" className="hv-edge" />
+          {[[112, 76], [70, 136], [160, 128], [118, 186]].map(([cx, cy]) => (
+            <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="6.5" className="hv-node" />
+          ))}
+          <circle cx="200" cy="196" r="8" className="hv-node hv-node--out" />
+          <text x="54" y="56" className="hv-label">AI MODEL</text>
+        </motion.g>
+
+        {/* Research: the model is evaluated */}
+        <motion.path d="M166 128 C236 128 280 112 340 112" className="hv-link hv-link--dashed" {...draw(2.3, 0.8)} />
+        <motion.g {...rise(2.35)}>
+          <path d="M340 40 H444 L468 64 V206 H340 Z" className="hv-device" />
+          <path d="M444 40 V64 H468" className="hv-edge" />
+          <path d="M356 64 H424" className="hv-title-line" />
+          <path d="M356 84 H452 M356 96 H440 M356 108 H448" className="hv-soft-line" />
+          <path d="M356 192 H452" className="hv-edge" />
+          <text x="340" y="28" className="hv-label">RESEARCH</text>
+        </motion.g>
+        {[[362, 46, 'hv-bar--best'], [392, 43, ''], [422, 42, '']].map(([x, h, cls], i) => (
+          <motion.rect
+            key={x}
+            x={x}
+            y={192 - h}
+            width="18"
+            height={h}
+            rx="2"
+            className={`hv-bar ${cls}`}
+            style={{ transformBox: 'fill-box', originY: 1 }}
+            {...at(2.6 + i * 0.1, { scaleY: 0 }, { scaleY: 1 }, 0.7)}
+          />
+        ))}
+      </svg>
+    </motion.div>
   );
 }
 
