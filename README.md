@@ -1,59 +1,30 @@
 # Abdullah Alahmadi — Portfolio
 
-Personal portfolio of Abdullah Alahmadi, a Software Engineering student at the University of Jeddah working across software systems, artificial intelligence, research and IoT.
+Personal portfolio of Abdullah Alahmadi, a Software Engineering student at the University of Jeddah working across software engineering, artificial intelligence, research, IoT, and wearable systems.
 
-A single-page site with research papers, project documents and a short overview of activities and skills.
+### Live Portfolio
 
-## Tech Stack
+**[abdullah-t1d.github.io](https://abdullah-t1d.github.io)**
 
-- [React](https://react.dev/)
-- [Vite](https://vite.dev/)
-- [Motion](https://motion.dev/) for animation
-- [Fontsource](https://fontsource.org/): Newsreader, Geist and Geist Mono
-- Plain CSS
+The live portfolio includes selected software projects, research work, engineering activities, and technical skills.
 
-## Run Locally
+## Selected Work
 
-Requires Node.js 20.19+ or 22.12+.
+- **repoCare** — AI-assisted health insight platform integrating software, wearable hardware, sensors, BLE, and mobile/backend systems.
+- **IoTutorMine** — ASE 2026 research and tool for LLM-based extraction of hardware Bills of Materials from IoT tutorial videos.
+- **Think-Up** — AI-assisted collaborative study platform.
+- **Masadir** — Academic support and software project management project.
 
-```bash
-git clone https://github.com/abdullah-t1d/abdullah-t1d.github.io.git
-cd abdullah-t1d.github.io
-npm install
-npm run dev
-```
+## Research
 
-Then open the local URL printed in the terminal (usually http://localhost:5173).
+Research interests include:
 
-## Build
+Software Engineering · Large Language Models · AI Evaluation · IoT · Human–AI Systems
 
-```bash
-npm run build
-npm run preview   # optional: serve the production build locally
-```
+## Portfolio Stack
 
-The static site is generated in `dist/`. Asset paths are relative, so it can be hosted at a domain root or on GitHub Pages.
+React · Vite · Motion · JavaScript · CSS
 
-## Project Structure
+---
 
-```
-public/
-  projects/     Project documents (Think-Up, Masadir)
-  research/     IoTutorMine paper and ATTD poster
-  favicon.svg
-src/
-  App.jsx       Content, sections and animations
-  styles.css    All styles
-index.html
-vite.config.js
-```
-
-## Portfolio Content
-
-- **Software Engineering**: the foundation of the work
-- **AI**: LLM-based systems and evaluation
-- **Research**: IoTutorMine (ASE '26) and a ChatGPT vs. healthcare professionals study presented at ATTD
-- **IoT**: wearable and sensor integration
-- **repoCare**: capstone project, an AI-assisted personal health platform
-- **IoTutorMine**: mining hardware Bills of Materials from IoT tutorial videos with LLMs
-- **Think-Up**: AI-assisted collaborative study platform
+© Abdullah Alahmadi
