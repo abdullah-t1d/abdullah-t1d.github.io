@@ -98,7 +98,7 @@ const SKILLS = [
 const CONTACT_LINKS = [
   { label: 'LinkedIn', value: 'abdullah-alahmadi', href: 'https://www.linkedin.com/in/abdullah-alahmadi-2b4958350' },
   { label: 'GitHub', value: 'abdullah-t1d', href: 'https://github.com/abdullah-t1d' },
-  { label: 'Phone', value: '058 255 9616', href: 'tel:+966582559616' },
+  { label: 'Phone', value: '+966 58 255 9616', href: 'tel:+966582559616' },
 ];
 
 /* ==========================================================================
@@ -429,7 +429,7 @@ function About() {
         <div className="about">
           <Heading eyebrow="About" title="Engineering first. Then the questions worth building for." />
           <Reveal className="about__text" delay={0.15}>
-            <p>I'm a fourth-year Software Engineering student at the University of Jeddah. My foundation is software engineering: requirements, architecture and building real systems, which I extend into artificial intelligence, large language models and the Internet of Things.</p>
+            <p>I'm a final-year Software Engineering student at the University of Jeddah. My foundation is software engineering: requirements, architecture and building real systems, which I extend into artificial intelligence, large language models and the Internet of Things.</p>
             <p>I'm drawn to systems for healthcare and education, and to research that measures how well AI systems actually work.</p>
             <p className="mono about__place">Jeddah, Saudi Arabia</p>
           </Reveal>
@@ -685,7 +685,7 @@ function Contact() {
       <div className="container">
         <Reveal as="p" className="eyebrow" y={8}>Contact</Reveal>
         <Reveal as="h2" className="contact__title" delay={0.05}>
-          Open to research, software engineering and meaningful technical collaborations.
+          Focused on building real software products, web platforms, intelligent systems, and contributing to applied research.
         </Reveal>
         <Reveal delay={0.15}>
           <a className="contact__email" href="mailto:alahmadia313@gmail.com">
